@@ -1,7 +1,9 @@
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
+import { ComponentProps } from "react";
 
-interface LinkIconProps {
+interface LinkIconProps
+  extends Omit<ComponentProps<typeof Link>, "href" | "children"> {
   to: string;
   Icon: React.ElementType;
   title: string;
@@ -13,13 +15,18 @@ export const LinkIcon: React.FC<LinkIconProps> = ({
   Icon,
   title,
   className,
+  ...props
 }) => {
   return (
     <Link
       href={to}
-      className="text-muted-foreground hover:text-primary transition-colors"
+      className={cn(
+        "text-muted-foreground hover:text-primary transition-colors",
+        className
+      )}
+      {...props} // 👈 spread to Link
     >
-      <Icon className={cn("h-5 w-5", className)} />
+      <Icon className="h-5 w-5" />
       <span className="sr-only">{title}</span>
     </Link>
   );

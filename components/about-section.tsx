@@ -1,47 +1,24 @@
+import { highlightsData } from "@/common/json-data/about";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Database, Globe, Server } from "lucide-react";
+import { FaCode, FaDatabase, FaGlobe, FaServer } from "react-icons/fa";
 
 export function AboutSection() {
-  const highlights = [
-    {
-      icon: Code,
-      title: "Frontend Development",
-      description: "React, Angular, TypeScript, HTML5, CSS3",
-    },
-    {
-      icon: Server,
-      title: "Backend Development",
-      description: "Node.js, Express.js, RESTful APIs, GraphQL",
-    },
-    {
-      icon: Database,
-      title: "Database Management",
-      description: "MongoDB, MySQL, PostgreSQL, Redis",
-    },
-    {
-      icon: Globe,
-      title: "Full-Stack Integration",
-      description: "MERN & MEAN stack expertise, DevOps, AWS",
-    },
-  ];
-
   return (
     <section id="about" className="py-24 bg-muted/30">
       <div className="px-4">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold tracking-tight font-serif sm:text-4xl">
-            About Me
+            {highlightsData.about.title}
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            With over 5 years of experience in full-stack development, I
-            specialize in building robust, scalable web applications using
-            modern JavaScript frameworks and technologies.
+            {highlightsData.about.intro}
           </p>
         </div>
 
         <div className="mx-auto mt-16 max-w-6xl">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {highlights.map((item, index) => (
+            {highlightsData.highlights.map((item, index) => (
               <Card
                 key={index}
                 className="text-center hover:shadow-lg transition-shadow"
@@ -66,11 +43,7 @@ export function AboutSection() {
           <Card>
             <CardContent className="pt-6">
               <p className="text-center text-muted-foreground leading-relaxed">
-                I'm passionate about creating efficient, maintainable code and
-                staying up-to-date with the latest technologies. When I'm not
-                coding, you can find me contributing to open-source projects,
-                writing technical blogs, or exploring new frameworks and tools
-                that can enhance development workflows.
+                {highlightsData.about.conclusion}
               </p>
             </CardContent>
           </Card>

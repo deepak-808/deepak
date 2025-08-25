@@ -1,7 +1,5 @@
 "use client";
 
-import type React from "react";
-
 import { useState } from "react";
 import {
   Card,
@@ -14,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle, AlertCircle } from "lucide-react";
+import { contactData } from "@/common/json-data/contacts";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -22,7 +21,6 @@ export function ContactSection() {
     email: "",
     message: "",
   });
-
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
@@ -38,21 +36,19 @@ export function ContactSection() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setSubmitStatus("success");
-        setFormData({ name: "", email: "", message: "" }); // Reset form
+        setFormData({ name: "", email: "", message: "" });
       } else {
         const errorData = await response.json();
         setSubmitStatus("error");
         setErrorMessage(errorData.error || "Failed to send message");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
       setErrorMessage("Network error. Please try again.");
     } finally {
@@ -63,36 +59,36 @@ export function ContactSection() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
-    <section id="contact" className="py-24">
-      <div className="container px-4">
+    <section id={contactData.id} className="py-24">
+      <div className="px-4">
+        {/* Section Title */}
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold tracking-tight font-serif sm:text-4xl">
-            Get In Touch
+            {contactData.title}
           </h2>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Ready to start your next project? Let's discuss how I can help bring
-            your ideas to life.
+            {contactData.description}
           </p>
         </div>
 
         <div className="mx-auto mt-16 max-w-6xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {/* Form */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-serif">Send a Message</CardTitle>
+                <CardTitle className="font-serif">
+                  {contactData.form.title}
+                </CardTitle>
                 <CardDescription>
-                  Fill out the form below and I'll get back to you as soon as
-                  possible.
+                  {contactData.form.description}
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                {/* Success/Error Messages */}
                 {submitStatus === "success" && (
                   <div className="mb-4 flex items-center gap-2 rounded-md bg-green-50 p-3 text-green-800 dark:bg-green-900/20 dark:text-green-400">
                     <CheckCircle className="h-4 w-4" />
@@ -101,7 +97,6 @@ export function ContactSection() {
                     </span>
                   </div>
                 )}
-
                 {submitStatus === "error" && (
                   <div className="mb-4 flex items-center gap-2 rounded-md bg-red-50 p-3 text-red-800 dark:bg-red-900/20 dark:text-red-400">
                     <AlertCircle className="h-4 w-4" />
@@ -109,87 +104,75 @@ export function ContactSection() {
                   </div>
                 )}
 
+                {/* Form Fields */}
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
+                  {contactData.form.fields.map((field) => (
+                    <div key={field.name} className="space-y-2">
+                      <Label htmlFor={field.name}>{field.label}</Label>
+                      {field.type === "textarea" ? (
+                        <Textarea
+                          id={field.name}
+                          name={field.name}
+                          rows={field.rows}
+                          value={formData[field.name as keyof typeof formData]}
+                          onChange={handleChange}
+                          required={field.required}
+                          disabled={isLoading}
+                          className="bg-white"
+                        />
+                      ) : (
+                        <Input
+                          id={field.name}
+                          name={field.name}
+                          type={field.type}
+                          value={formData[field.name as keyof typeof formData]}
+                          onChange={handleChange}
+                          required={field.required}
+                          disabled={isLoading}
+                          className="bg-white"
+                        />
+                      )}
+                    </div>
+                  ))}
                   <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? "Sending..." : "Send Message"}
+                    {isLoading ? "Sending..." : contactData.form.buttonText}
                   </Button>
                 </form>
               </CardContent>
             </Card>
 
+            {/* Contact Info & CTA */}
             <div className="space-y-8">
               <Card>
                 <CardHeader>
                   <CardTitle className="font-serif">
-                    Contact Information
+                    {contactData.contactInfo.title}
                   </CardTitle>
                   <CardDescription>
-                    Feel free to reach out through any of these channels.
+                    {contactData.contactInfo.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="h-5 w-5 text-primary" />
-                    <span>deepak.ds.0621@gmail.com</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="h-5 w-5 text-primary" />
-                    <span>+91 98727 93808</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="h-5 w-5 text-primary" />
-                    <span>SAS Nagar Mohali, India</span>
-                  </div>
+                  {contactData.contactInfo.items.map(
+                    ({ type, icon: Icon, value }) => (
+                      <div key={type} className="flex items-center space-x-3">
+                        <Icon className="h-5 w-5 text-primary" />
+                        <span>{value}</span>
+                      </div>
+                    )
+                  )}
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
                   <CardTitle className="font-serif">
-                    Let's Build Something Amazing
+                    {contactData.cta.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    I'm always interested in new opportunities and exciting
-                    projects. Whether you need a full-stack web application, API
-                    development, or technical consulting, I'd love to hear about
-                    your project.
+                    {contactData.cta.description}
                   </p>
                 </CardContent>
               </Card>
