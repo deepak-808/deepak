@@ -1,7 +1,5 @@
 import { highlightsData } from "@/common/json-data/about";
 import { Card, CardContent } from "@/components/ui/card";
-import { Code, Database, Globe, Server } from "lucide-react";
-import { FaCode, FaDatabase, FaGlobe, FaServer } from "react-icons/fa";
 
 export function AboutSection() {
   return (
