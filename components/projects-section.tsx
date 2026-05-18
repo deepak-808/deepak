@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { projects } from "@/common/json-data/projects";
 import { lazy } from "react";
+import Image from "next/image";
 const LinkIcon = lazy(() => import("@/common/components/link-icon"));
 
 export function ProjectsSection() {
@@ -31,10 +32,12 @@ export function ProjectsSection() {
                 key={index}
                 className="overflow-hidden hover:shadow-lg transition-shadow"
               >
-                <div className="aspect-video overflow-hidden">
-                  <img
+                <div className="">
+                  <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
+                    width={600}
+                    height={400}
                     className="h-full w-full object-cover transition-transform hover:scale-105"
                   />
                 </div>
@@ -64,11 +67,12 @@ export function ProjectsSection() {
                         rel="noopener noreferrer"
                       />
                     </Button>
+
                     <Button size="sm" variant="outline" asChild>
                       <LinkIcon
                         title={projects.liveDemo.title}
                         Icon={projects.liveDemo.Icon}
-                        to={project.github}
+                        to={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
                       />

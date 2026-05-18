@@ -3,7 +3,7 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 export const projects = {
   title: "Featured Projects",
   description:
-    "Here are some of my recent projects that showcase my expertise in MERN and MEAN stack development.",
+    "Here are some of my recent projects showcasing expertise in healthcare, CRM, and SaaS platform development.",
   code: {
     title: "Code",
     Icon: FaGithub,
@@ -11,40 +11,32 @@ export const projects = {
   liveDemo: { title: "Live Demo", Icon: FaExternalLinkAlt },
   project: [
     {
-      title: "E-Commerce Platform",
+      title: "ApexNote – CRM & Healthcare Platform",
       description:
-        "Full-stack MERN application with user authentication, payment integration, and admin dashboard.",
+        "Built a dynamic treatment program builder supporting nested goals, sessions, and intervention workflows. Implemented role-based permissions and secure access control for healthcare practitioners. Developed advanced forms using React Hook Form and Yup validation reducing form errors by 40%. Created reusable API architecture and scalable frontend modules for complex healthcare workflows.",
       image: "/modern-ecommerce-interface.png",
-      tech: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      github: "https://github.com",
-      live: "https://example.com",
+      tech: ["Next.js", "NestJS", "TypeScript", "Node.js", "Zustand", "MongoDB"],
+      github: "https://github.com/deepak-808",
+      live: "https://app.apexnote.com",
+      api: "https://api.apexnote.com/api/v1/docs",
     },
     {
-      title: "Task Management App",
+      title: "Zenclinic – Clinic Appointment Management System",
       description:
-        "MEAN stack application with real-time collaboration, drag-and-drop functionality, and team management.",
+        "Built a multi-user healthcare and appointment management platform with role-based access control (RBAC). Developed real-time scheduling and patient workflow management system supporting 1000+ patient workflows. Implemented CRM dashboard for clinic operations, practitioner management, and appointment tracking. Designed scalable backend APIs and caching strategies using Redis.",
       image: "/task-management-dashboard.png",
-      tech: ["Angular", "Node.js", "MongoDB", "Express", "Socket.io"],
-      github: "https://github.com",
-      live: "https://example.com",
+      tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "MongoDB", "Redis", "Docker"],
+      github: "https://github.com/deepak-808",
+      live: "https://app.zenclinic.io",
     },
     {
-      title: "Social Media Dashboard",
+      title: "Padder – Residential Property Management Platform",
       description:
-        "Analytics dashboard for social media management with data visualization and automated reporting.",
+        "Contributed to development of a multi-tenant residential property management platform for tenant onboarding, authentication, and property workflows. Built responsive and secure frontend modules using React.js, Next.js, and TypeScript. Implemented authentication flows, protected routes, and role-based access management for tenants and administrators.",
       image: "/social-media-analytics-dashboard.png",
-      tech: ["React", "Node.js", "PostgreSQL", "Chart.js", "Redis"],
-      github: "https://github.com",
-      live: "https://example.com",
-    },
-    {
-      title: "Real-time Chat Application",
-      description:
-        "Scalable chat application with multiple rooms, file sharing, and message encryption.",
-      image: "/modern-chat-app.png",
-      tech: ["Angular", "Node.js", "MongoDB", "Socket.io", "JWT"],
-      github: "https://github.com",
-      live: "https://example.com",
+      tech: ["Next.js", "React.js", "TypeScript", "Node.js", "REST APIs"],
+      github: "https://github.com/deepak-808",
+      live: "https://residential.padder.com/auth/tenant/signin",
     },
   ],
 };

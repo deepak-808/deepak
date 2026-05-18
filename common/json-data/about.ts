@@ -1,33 +1,33 @@
-import { FaCode, FaDatabase, FaGlobe, FaServer } from "react-icons/fa";
+import { FaCode, FaDatabase, FaServer, FaTools } from "react-icons/fa";
 
 export const highlightsData = {
   about: {
     title: "About Me",
     intro:
-      "With over 5 years of experience in full-stack development, I specialize in building robust, scalable web applications using modern JavaScript frameworks and technologies.",
+      "Full Stack Developer with 4+ years of experience building scalable healthcare, CRM, and SaaS platforms. I specialize in Next.js, React.js, TypeScript, Node.js, and Go, with deep expertise in microservices architecture, REST APIs, RBAC systems, and CI/CD pipelines.",
     conclusion:
-      "I'm passionate about creating efficient, maintainable code and staying up-to-date with the latest technologies. When I'm not coding, you can find me contributing to open-source projects, writing technical blogs, or exploring new frameworks and tools that can enhance development workflows.",
+      "I'm passionate about creating efficient, maintainable code and proven at improving application performance and scalability. I have a track record of reducing page load times by 35%, API response times by 45%, and deployment time by 60% using automated CI/CD pipelines in agile environments.",
   },
   highlights: [
     {
       icon: FaCode,
       title: "Frontend Development",
-      description: "React, Angular, TypeScript, HTML5, CSS3",
+      description: "Next.js, React.js, TypeScript, TailwindCSS, Zustand, Redux Toolkit, React Hook Form",
     },
     {
       icon: FaServer,
       title: "Backend Development",
-      description: "Node.js, Express.js, RESTful APIs, GraphQL",
+      description: "Node.js, Express.js, Go (Gin), REST APIs, Microservices, JWT Authentication, RBAC",
     },
     {
       icon: FaDatabase,
       title: "Database Management",
-      description: "MongoDB, MySQL, PostgreSQL, Redis",
+      description: "PostgreSQL, MongoDB, Redis",
     },
     {
-      icon: FaGlobe,
-      title: "Full-Stack Integration",
-      description: "MERN & MEAN stack expertise, DevOps, AWS",
+      icon: FaTools,
+      title: "DevOps & Tools",
+      description: "Docker, CI/CD, GitHub Actions, Linux, Git",
     },
   ],
 };

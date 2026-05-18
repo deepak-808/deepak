@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions);
 
     return NextResponse.json(
       { message: "Email sent successfully" },

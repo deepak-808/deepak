@@ -19,7 +19,7 @@ export const footer = {
     {
       id: 2,
       title: "LinkedIn",
-      href: "www.linkedin.com/in/deepak-kumar-374149118",
+      href: "https://www.linkedin.com/in/deepak-kumar-374149118",
       icon: FaLinkedin,
     },
     // {
@@ -31,7 +31,7 @@ export const footer = {
     {
       id: 4,
       title: "Email",
-      href: "mailto:alex@example.com",
+      href: "mailto:deepak.ds.0621@gmail.com",
       icon: MdEmail,
     },
   ],

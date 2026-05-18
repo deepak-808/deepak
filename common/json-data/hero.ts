@@ -8,7 +8,7 @@ export const heroData = {
     highlight: "Deepak Kumar",
   },
   description:
-    "A passionate Full-Stack Developer specializing in MERN and MEAN stack technologies. I build scalable web applications that deliver exceptional user experiences.",
+    "Full Stack Developer with 4+ years of experience building scalable healthcare, CRM, and SaaS platforms using Next.js, React.js, TypeScript, Node.js, and Go. Experienced in microservices architecture, REST APIs, RBAC systems, CI/CD pipelines, Docker, and database optimization.",
   buttons: [
     { label: "View My Work", href: "#projects", variant: "primary" },
     { label: "Get In Touch", href: "#contact", variant: "outline" },
@@ -17,10 +17,10 @@ export const heroData = {
     { title: "GitHub", href: "https://github.com/deepak-808", icon: FaGithub },
     {
       title: "LinkedIn",
-      href: "www.linkedin.com/in/deepak-kumar-374149118",
+      href: "https://www.linkedin.com/in/deepak-kumar-374149118",
       icon: FaLinkedin,
     },
-    { title: "Email", href: "mailto:deepak.ds.0621@gmai.com", icon: MdEmail },
+    { title: "Email", href: "mailto:deepak.ds.0621@gmail.com", icon: MdEmail },
   ],
   scrollIndicator: { icon: FaArrowDown },
 };
